@@ -11,10 +11,17 @@ aces_points:
     mov x9, 171
     mul dice, dice, x9
     lsr return_value, dice, 9
+    .unreq return_value
+    .unreq dice
 
 // e.g. 12223
 twos_points:
     dice .req x0
-    return_value .req x0
+    return_value .req x1
     mov tmp0, 0b010010010010010
+    mov w8, 1
     eor dice, dice, x11
+    ands tmp0, dice, 0b111000000000000
+    addeq w1, w1, w8
+    .unreq return_value
+    .unreq dice
