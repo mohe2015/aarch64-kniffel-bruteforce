@@ -23,7 +23,7 @@ arg2 .req x2
 syscall .req x8
 
 main:
-    mov arg0, STDOUT_FILENO
+    mov arg0, 1
     adr arg1, hello_txt
     mov arg2, hello_len
     mov syscall, __NR_write
