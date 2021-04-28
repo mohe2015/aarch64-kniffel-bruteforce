@@ -1,8 +1,12 @@
 // https://sourceware.org/binutils/docs-2.36/as/index.html
 // https://developer.arm.com/documentation/ihi0055/latest/
+// https://developer.arm.com/architectures/learn-the-architecture/aarch64-instruction-set-architecture/instruction-sets-in-the-arm-architecture
+// https://developer.arm.com/documentation/100076/0100/a64-instruction-set-reference
 // https://modexp.wordpress.com/2018/10/30/arm64-assembly/
 // First this will only be a program to play kniffel, not to predict anything
 #include <asm/unistd.h>
+#include "five_dice.S"
+#include "boxes.S"
 
 .struct 0
 dimension_t.x: .skip 4
