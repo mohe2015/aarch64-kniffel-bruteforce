@@ -5,6 +5,7 @@
 // https://modexp.wordpress.com/2018/10/30/arm64-assembly/
 // First this will only be a program to play kniffel, not to predict anything
 #include <asm/unistd.h>
+#include "utils.S"
 #include "five_dice.S"
 #include "boxes.S"
 
@@ -21,9 +22,6 @@ hello_len = . - hello_txt
 
 .text
 
-arg0 .req x0
-arg1 .req x1
-arg2 .req x2
 syscall .req x8
 
 main:
