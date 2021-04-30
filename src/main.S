@@ -26,7 +26,7 @@ hello_len = . - hello_txt
 .text
 
 main:
-    sub sp, sp, 8
+    sub sp, sp, 16
     str lr, [sp, 0]
 
     mov arg0, 1
@@ -42,6 +42,6 @@ main:
     .unreq return_value
 
     ldr lr, [sp], 0
-    add sp, sp, 8
+    add sp, sp, 16
 
     ret
