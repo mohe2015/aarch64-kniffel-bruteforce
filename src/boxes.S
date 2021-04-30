@@ -17,5 +17,6 @@ twos_points:
     csinc return_value, return_value, return_value, eq
     ands tmp0, dice, 0b000000000000111
     csinc return_value, return_value, return_value, eq
+    ret
     .unreq return_value
     .unreq dice
