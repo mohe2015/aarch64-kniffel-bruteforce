@@ -2,7 +2,7 @@
 
 ```bash
 nix develop
-aarch64-unknown-linux-gnu-gcc src/main.S ; ./a.out ; echo $?
+aarch64-linux-gnu-gcc -Og -g -ggdb src/main.S ; ./a.out ; echo $?
 ```
 
 ## GDB settings
@@ -10,4 +10,5 @@ aarch64-unknown-linux-gnu-gcc src/main.S ; ./a.out ; echo $?
 ```
 layout src
 layout regs
+x/8xg $sp
 ```

@@ -49,7 +49,7 @@ this_is_totally_sorting:
 
     done_1:
 
-    ldr lr, [sp], 8
+    ldr lr, [sp, 8]
     add sp, sp, 16
     ret
     
