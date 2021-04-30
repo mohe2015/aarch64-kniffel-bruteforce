@@ -1,5 +1,7 @@
 #include "utils.S"
 
+.text
+
 // e.g. 12223
 twos_points:
     dice .req x0

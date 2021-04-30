@@ -10,6 +10,7 @@
 #include "utils.S"
 #include "five_dice.S"
 #include "boxes.S"
+#include "../test/boxes.S"
 
 .struct 0
 dimension_t.x: .skip 4
@@ -24,16 +25,23 @@ hello_len = . - hello_txt
 
 .text
 
-syscall .req x8
-
 main:
+    sub sp, sp, 8
+    str lr, [sp, 0]
+
     mov arg0, 1
     adr arg1, hello_txt
     mov arg2, hello_len
     mov syscall, __NR_write
     svc 0
 
+    bl test_twos_points
+
     return_value .req x0
     mov return_value, 10
     .unreq return_value
+
+    ldr lr, [sp], 0
+    add sp, sp, 8
+
     ret
