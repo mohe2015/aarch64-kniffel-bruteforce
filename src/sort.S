@@ -7,27 +7,27 @@ this_is_totally_sorting:
     // count occurrences of each number
 
     mov tmp2, 0b111
-    and tmp0, arg0, tmp2
+    and tmp0, tmp2, arg0        // tmp0 = 0b111 & arg0
     ldrb wtmp1, [sp, tmp0]
     add tmp1, tmp1, 1
     strb wtmp1, [sp, tmp0]
 
-    and tmp0, arg0, tmp2, LSR 3
+    and tmp0, tmp2, arg0, LSR 3 // tmp0 = 0b111 & (arg0 >> 3)
     ldrb wtmp1, [sp, tmp0]
     add tmp1, tmp1, 1
     strb wtmp1, [sp, tmp0]
 
-    and tmp0, arg0, tmp2, LSR 6
+    and tmp0, tmp2, arg0, LSR 6
     ldrb wtmp1, [sp, tmp0]
     add tmp1, tmp1, 1
     strb wtmp1, [sp, tmp0]
 
-    and tmp0, arg0, tmp2, LSR 9
+    and tmp0, tmp2, arg0, LSR 9
     ldrb wtmp1, [sp, tmp0]
     add tmp1, tmp1, 1
     strb wtmp1, [sp, tmp0]
 
-    and tmp0, arg0, tmp2, LSR 12
+    and tmp0, tmp2, arg0, LSR 12
     ldrb wtmp1, [sp, tmp0]
     add tmp1, tmp1, 1
     strb wtmp1, [sp, tmp0]
