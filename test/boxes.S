@@ -1,7 +1,10 @@
 #include <asm/unistd.h>
 
 .data
-error_txt: .ascii "Assert failed!\n"
+success_txt: .ascii "\033[0;32mTest successful!\n"
+success_len = . - success_txt
+
+error_txt: .ascii "\033[0;31mAssert failed!\n"
 error_len = . - error_txt
 
 .text
@@ -21,8 +24,18 @@ test_twos_points:
     mov arg2, error_len
     mov syscall, __NR_write
     svc 0
+    b end_1
 
     correct_1:
+
+    mov arg0, 1
+    adr arg1, success_txt
+    mov arg2, success_len
+    mov syscall, __NR_write
+    svc 0
+    b end_1
+
+    end_1:
     ldr lr, [sp], 0
     add sp, sp, 16
     ret

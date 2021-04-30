@@ -5,6 +5,7 @@
 // https://modexp.wordpress.com/2018/10/30/arm64-assembly/
 // https://developer.arm.com/documentation/102374/0101/Program-flow---conditional-select-instructions
 // https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/using-the-stack-in-aarch64-implementing-push-and-pop
+// https://gist.github.com/Prakasaka/219fe5695beeb4d6311583e79933a009
 // First this will only be a program to play kniffel, not to predict anything
 #include <asm/unistd.h>
 #include "utils.S"
@@ -20,7 +21,7 @@ dimension_t_size:
 .global main
 
 .data
-hello_txt: .ascii "Hello, World!\n"
+hello_txt: .ascii "\033[0;35mHello, World!\n\033[0m"
 hello_len = . - hello_txt
 
 .text
