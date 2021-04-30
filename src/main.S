@@ -12,6 +12,7 @@
 #include "five_dice.S"
 #include "boxes.S"
 #include "../test/boxes.S"
+#include "sort.S"
 
 .struct 0
 dimension_t.x: .skip 4
@@ -39,6 +40,9 @@ main:
     bl test_twos_points
 
     mov arg0, 0b001010011100101
+
+    bl this_is_totally_sorting
+
     bl print_dice
 
 
