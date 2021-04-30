@@ -18,11 +18,11 @@ aces_points:
 twos_points:
     dice .req x0
     return_value .req x1
+    mov return_value, 0
     mov tmp0, 0b010010010010010
-    mov w8, 1
     eor dice, dice, x11
     ands tmp0, dice, 0b111000000000000
-    addeq w1, w1, w8
+    csinc return_value, return_value, return_value, eq
     .unreq return_value
     .unreq dice
 
