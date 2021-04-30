@@ -3,6 +3,7 @@
 this_is_totally_sorting:
     sub sp, sp, 16
     str lr, [sp, 8]
+    str wzr, [sp, 0] // initialize with 0
 
     // count occurrences of each number
 
