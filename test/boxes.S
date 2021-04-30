@@ -15,36 +15,12 @@ test_twos_points:
     str lr, [sp, 0]
 
     assert_1 0, twos_points, 0b000000000000000
-
-    mov arg0, 0b000000000000010
-    bl twos_points
-    cmp ret0, 1
-    bl assert
-
-    mov arg0, 0b000000000010010
-    bl twos_points
-    cmp ret0, 2
-    bl assert
-
-    mov arg0, 0b000000010010010
-    bl twos_points
-    cmp ret0, 3
-    bl assert
-
-    mov arg0, 0b000010010010010
-    bl twos_points
-    cmp ret0, 4
-    bl assert
-
-    mov arg0, 0b010010010010010
-    bl twos_points
-    cmp ret0, 5
-    bl assert
-
-    mov arg0, 0b001010010010010
-    bl twos_points
-    cmp ret0, 4
-    bl assert
+    assert_1 1, twos_points, 0b000000000000010
+    assert_1 2, twos_points, 0b000000000010010
+    assert_1 3, twos_points, 0b000000010010010
+    assert_1 4, twos_points, 0b000010010010010
+    assert_1 5, twos_points, 0b010010010010010
+    assert_1 4, twos_points, 0b001010010010010
 
     ldr lr, [sp], 0
     add sp, sp, 16
