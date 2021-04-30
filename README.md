@@ -2,5 +2,5 @@
 
 ```bash
 nix develop
-aarch64-unknown-linux-gnu-gcc main.S ; ./a.out ; echo $?
+aarch64-unknown-linux-gnu-gcc src/main.S ; ./a.out ; echo $?
 ```
