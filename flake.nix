@@ -16,6 +16,6 @@
         };
       in
       {
-        devShell = crossPkgs.mkShell { };
+        devShell = crossPkgs.mkShell { nativeBuildInputs = [ crossPkgs.gdb ]; };
       });
 }

@@ -13,7 +13,7 @@ test_twos_points:
     return_value .req x1
     mov dice, 0b000000000000000
     bl twos_points
-    CMP return_value, 0
+    cmp return_value, 0
     b.eq correct_1
 
     mov arg0, 1
