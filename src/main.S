@@ -22,7 +22,7 @@ dimension_t_size:
 .global main
 
 .data
-hello_txt: .ascii "\033[0;35mHello, World!\n\033[0m"
+hello_txt: .ascii "\033[0;35m\nHello, World!\n\033[0m"
 hello_len = . - hello_txt
 
 .text
@@ -40,12 +40,24 @@ main:
     bl test_twos_points
 
     mov arg0, 0b001010011100101
-
     bl this_is_totally_sorting
-
     bl print_dice
 
+    mov arg0, 1
+    adr arg1, hello_txt
+    mov arg2, hello_len
+    mov syscall, __NR_write
+    svc 0
 
+    mov arg0, 0b110101100011010
+    bl this_is_totally_sorting
+    bl print_dice
+
+    mov arg0, 1
+    adr arg1, hello_txt
+    mov arg2, hello_len
+    mov syscall, __NR_write
+    svc 0
 
     mov ret0, 10
 
