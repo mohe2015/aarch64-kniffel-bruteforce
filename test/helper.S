@@ -2,16 +2,15 @@
 #include "../src/utils.S"
 
 .data
-success_txt: .ascii "\033[0;32mTest successful!\n"
+success_txt: .ascii "\033[0;32mTest successful!\n\033[0m"
 success_len = . - success_txt
 
-error_txt: .ascii "\033[0;31mAssert failed!\n"
+error_txt: .ascii "\033[0;31mAssert failed!\n\033[0m"
 error_len = . - error_txt
 
 .text
 
 assert:
-    cmp ret0, 0
     b.eq correct_1
 
     mov arg0, 1
