@@ -38,9 +38,7 @@ main:
 
     bl test_twos_points
 
-    return_value .req x0
-    mov return_value, 10
-    .unreq return_value
+    mov ret0, 10
 
     ldr lr, [sp], 0
     add sp, sp, 16
