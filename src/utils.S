@@ -11,6 +11,11 @@ ret2 .req x2
 tmp0 .req x8
 tmp1 .req x9
 tmp2 .req x10
+
+wtmp0 .req w8
+wtmp1 .req w9
+wtmp2 .req w10
+
 // r19-r28 and sp must be preserved (callee-saved)
 
 syscall .req x8

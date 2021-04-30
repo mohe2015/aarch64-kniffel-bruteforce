@@ -1,6 +1,7 @@
 #include <asm/unistd.h>
 #include "helper.S"
 
+// assert(out == fun(in))
 .macro assert_1 out, fun, in
     mov arg0, \in
     bl \fun
@@ -13,6 +14,9 @@
 test_twos_points:
     sub sp, sp, 16
     str lr, [sp, 0]
+
+    assert_1 0, ones_points, 0b110010000011100
+    assert_1 5, ones_points, 0b001001001001001
 
     assert_1 0, twos_points, 0b000000000000000
     assert_1 1, twos_points, 0b000000000000010

@@ -10,6 +10,7 @@ error_len = . - error_txt
 
 .text
 
+// assert that eq flag is set
 assert:
     b.eq correct_1
 

@@ -38,6 +38,11 @@ main:
 
     bl test_twos_points
 
+    mov arg0, 0b001010011100101
+    bl print_dice
+
+
+
     mov ret0, 10
 
     ldr lr, [sp], 0

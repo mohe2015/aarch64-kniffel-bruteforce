@@ -2,6 +2,7 @@
 
 .altmacro
 
+# check each of the places
 .macro n_points
     mov ret0, 0
     eor tmp0, tmp0, tmp1
