@@ -16,4 +16,14 @@ game_state.small_straight:  .skip 2
 game_state.large_straight:  .skip 2
 game_state.yahtzee:         .skip 2
 game_state.chance:          .skip 2
+.align 3
 game_state_size:
+
+.text
+
+initialize_game_state:
+    // adjust this for different game_state_size
+    mov tmp0, -1
+    stp tmp0, tmp0, [arg0]
+    stp tmp0, tmp0, [arg0, 16]
+    ret

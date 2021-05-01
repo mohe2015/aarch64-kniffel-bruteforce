@@ -28,18 +28,21 @@ hello_len = . - hello_txt
 .text
 
 main:
-    sub sp, sp, 16
-    str lr, [sp, 0]
+    sub sp, sp, 16+game_state_size
+    str lr, [sp, game_state_size]
 
-    mov arg0, 1
+    mov arg0, sp
+    bl initialize_game_state
+
+    /*mov arg0, 1
     adr arg1, hello_txt
     mov arg2, hello_len
     mov syscall, __NR_write
-    svc 0
+    svc 0*/
 
     bl test_twos_points
 
-    mov arg0, 0b001010011100101
+    /*mov arg0, 0b001010011100101
     bl this_is_totally_sorting
     bl print_dice
 
@@ -57,7 +60,10 @@ main:
     adr arg1, hello_txt
     mov arg2, hello_len
     mov syscall, __NR_write
-    svc 0
+    svc 0*/
+
+    mov arg0, sp
+    bl show_gui_game
 
     main_retry:
     bl random_dice
@@ -72,11 +78,10 @@ main:
 
     //b main_retry
 
-    bl show_gui_game
 
     mov ret0, 10
 
-    ldr lr, [sp, 0]
-    add sp, sp, 16
+    ldr lr, [sp, game_state_size]
+    add sp, sp, 16+game_state_size
 
     ret

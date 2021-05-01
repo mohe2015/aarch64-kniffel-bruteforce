@@ -36,8 +36,9 @@ show_gui_game:
     str lr, [sp, 16]
     stp xzr, xzr, [sp, 0]
 
+    mov tmp0, arg0
     adr arg0, gui_game_txt // first arg?
-    mov arg1, 1 // first arg
+    ldr arg1, [tmp0, game_state.aces] // first arg
     mov arg2, 2 // first arg
     mov arg3, 3 // first arg
     mov arg4, 4 // first arg
@@ -46,11 +47,11 @@ show_gui_game:
     mov arg7, 7 // first arg
     //str tmp0, [sp, #16]
     //str tmp0, [sp, #8]
-    mov tmp0, 16
-    str tmp0, [sp, 0]
+    mov tmp1, 16
+    str tmp1, [sp, 0]
     bl printf
 
-    ldp tmp0, tmp1, [sp, 0]
+    ldp tmp1, tmp2, [sp, 0]
     ldr lr, [sp, 16]
     add sp, sp, 32
 
