@@ -92,34 +92,44 @@ main:
     ldr tmp0, [sp, game_state_size]
     mov tmp1, 0b11111111
     and tmp2, tmp1, tmp0, LSR 0
+    cmp tmp2, '\n'
+    b.eq read_dice_end
     sub tmp2, tmp2, 48
     add ret0, tmp2, ret0, LSL 3
 
     ldr tmp0, [sp, game_state_size]
     mov tmp1, 0b11111111
     and tmp2, tmp1, tmp0, LSR 8
+    cmp tmp2, '\n'
+    b.eq read_dice_end
     sub tmp2, tmp2, 48
     add ret0, tmp2, ret0, LSL 3
 
     ldr tmp0, [sp, game_state_size]
     mov tmp1, 0b11111111
     and tmp2, tmp1, tmp0, LSR 16
+    cmp tmp2, '\n'
+    b.eq read_dice_end
     sub tmp2, tmp2, 48
     add ret0, tmp2, ret0, LSL 3
 
     ldr tmp0, [sp, game_state_size]
     mov tmp1, 0b11111111
     and tmp2, tmp1, tmp0, LSR 24
+    cmp tmp2, '\n'
+    b.eq read_dice_end
     sub tmp2, tmp2, 48
     add ret0, tmp2, ret0, LSL 3
 
     ldr tmp0, [sp, game_state_size]
     mov tmp1, 0b11111111
     and tmp2, tmp1, tmp0, LSR 32
+    cmp tmp2, '\n'
+    b.eq read_dice_end
     sub tmp2, tmp2, 48
     add ret0, tmp2, ret0, LSL 3
 
-
+    read_dice_end:
 
 
     bl print_dice
