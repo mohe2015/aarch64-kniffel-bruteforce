@@ -7,6 +7,7 @@
 // https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/using-the-stack-in-aarch64-implementing-push-and-pop
 // https://gist.github.com/Prakasaka/219fe5695beeb4d6311583e79933a009
 // https://armkeil.blob.core.windows.net/developer/Files/pdf/graphics-and-multimedia/ARMv8_InstructionSetOverview.pdf
+// https://github.com/ARM-software/abi-aa/releases
 // First this will only be a program to play kniffel, not to predict anything
 #include <asm/unistd.h>
 #include "utils.S"
@@ -15,6 +16,7 @@
 #include "../test/boxes.S"
 #include "sort.S"
 #include "roll_dice.S"
+#include "gui.S"
 
 .struct 0
 dimension_t.x: .skip 4
@@ -72,7 +74,9 @@ main:
     mov syscall, __NR_write
     svc 0
 
-    b main_retry
+    //b main_retry
+
+    bl show_gui_game
 
     mov ret0, 10
 

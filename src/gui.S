@@ -1,4 +1,3 @@
-
 .data
 
 gui_game_txt:
@@ -33,4 +32,16 @@ gui_game_len = . - gui_game_txt
 .text
 
 show_gui_game:
-    
+    sub sp, sp, 32
+    str lr, [sp, 16]
+    stp xzr, xzr, [sp, 0]
+
+    adr arg0, gui_game_txt // first arg?
+    mov arg1, xzr // number of args?
+    bl printf
+
+    ldp tmp0, tmp1, [sp, 0]
+    ldr lr, [sp, 16]
+    add sp, sp, 32
+
+    ret
