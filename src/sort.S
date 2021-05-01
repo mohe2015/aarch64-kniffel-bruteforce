@@ -5,6 +5,8 @@ this_is_totally_sorting:
     str lr, [sp, 8]
     str xzr, [sp, 0] // initialize with 0
 
+    // doing this in registers is maybe faster?
+
     // count occurrences of each number
 
     mov tmp2, 0b111

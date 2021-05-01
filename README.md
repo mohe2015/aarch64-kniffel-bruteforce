@@ -18,12 +18,19 @@ x/8xg $sp
 ```
 ./a.out | grep 0000 > statistics # quite slow run for a few minutes
 awk '{ a[$0]++ } END{ for(x in a) print a[x], x }' statistics | sort
+
+./a.out > result
+sort result | uniq -c | sort -nr
 ```
 
 ## Profiling
 
 https://valgrind.org/docs/manual/manual.html
+https://valgrind.org/docs/manual/cl-manual.html
 
 ```bash
-valgrind --tool=callgrind ./a.out
+valgrind --tool=callgrind --cache-sim=yes --branch-sim=yes --dump-instr=yes --collect-jumps=yes ./a.out
+
+ssh -X -A pi@raspberrypi.local
+
 ```

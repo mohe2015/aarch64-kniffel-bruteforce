@@ -1,2 +1,4 @@
 .Notizen.autosave.xopp
 a.out
+result
+callgrind.out.*

@@ -24,7 +24,7 @@ dimension_t_size:
 .global main
 
 .data
-hello_txt: .ascii "\033[0;35m\nHello, World!\n\033[0m"
+hello_txt: .ascii "\n"
 hello_len = . - hello_txt
 
 .text
@@ -63,7 +63,7 @@ main:
 
     main_retry:
     bl random_dice
-    bl this_is_totally_sorting
+    //bl this_is_totally_sorting
     bl print_dice
 
     mov arg0, 1
