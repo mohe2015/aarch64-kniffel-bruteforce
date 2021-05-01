@@ -8,6 +8,7 @@
 // https://gist.github.com/Prakasaka/219fe5695beeb4d6311583e79933a009
 // https://armkeil.blob.core.windows.net/developer/Files/pdf/graphics-and-multimedia/ARMv8_InstructionSetOverview.pdf
 // https://github.com/ARM-software/abi-aa/releases
+// stack must be 16 byte aligned
 // First this will only be a program to play kniffel, not to predict anything
 #include <asm/unistd.h>
 #include "utils.S"
@@ -28,8 +29,9 @@ hello_len = . - hello_txt
 .text
 
 main:
-    sub sp, sp, 16+game_state_size
-    str lr, [sp, game_state_size]
+    // game_state dice lr
+    sub sp, sp, game_state_size+16/*dice*/+16/*lr*/
+    str lr, [sp, game_state_size+16]
 
     mov arg0, sp
     bl initialize_game_state
@@ -65,13 +67,8 @@ main:
     mov arg0, sp
     bl show_gui_game
 
-    
-
-
-/*
-    main_retry:
     bl random_dice
-    //bl this_is_totally_sorting
+    bl this_is_totally_sorting
     bl print_dice
 
     mov arg0, 1
@@ -80,14 +77,19 @@ main:
     mov syscall, __NR_write
     svc 0
 
-    //b main_retry
-*/
+    // read chosen numbers
+    mov arg0, 0
+    add arg1, sp, game_state_size
+    mov arg2, 8
+    mov syscall, __NR_read
+    svc 0
+
 
 
 
     mov ret0, 10
 
-    ldr lr, [sp, game_state_size]
-    add sp, sp, 16+game_state_size
+    ldr lr, [sp, game_state_size+16]
+    add sp, sp, game_state_size+16/*dice*/+16/*lr*/
 
     ret
