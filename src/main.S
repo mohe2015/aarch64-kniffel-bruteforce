@@ -77,6 +77,9 @@ main:
     mov syscall, __NR_write
     svc 0
 
+
+
+    // print_dice in reverse
     // read chosen numbers
     mov arg0, 0
     add arg1, sp, game_state_size
@@ -84,8 +87,53 @@ main:
     mov syscall, __NR_read
     svc 0
 
+    mov ret0, 0
+    
+    ldr tmp0, [sp, game_state_size]
+    mov tmp1, 0b11111111
+    and tmp2, tmp1, tmp0, LSR 0
+    sub tmp2, tmp2, 48
+    add ret0, tmp2, ret0, LSL 3
+
+    ldr tmp0, [sp, game_state_size]
+    mov tmp1, 0b11111111
+    and tmp2, tmp1, tmp0, LSR 8
+    sub tmp2, tmp2, 48
+    add ret0, tmp2, ret0, LSL 3
+
+    ldr tmp0, [sp, game_state_size]
+    mov tmp1, 0b11111111
+    and tmp2, tmp1, tmp0, LSR 16
+    sub tmp2, tmp2, 48
+    add ret0, tmp2, ret0, LSL 3
+
+    ldr tmp0, [sp, game_state_size]
+    mov tmp1, 0b11111111
+    and tmp2, tmp1, tmp0, LSR 24
+    sub tmp2, tmp2, 48
+    add ret0, tmp2, ret0, LSL 3
+
+    ldr tmp0, [sp, game_state_size]
+    mov tmp1, 0b11111111
+    and tmp2, tmp1, tmp0, LSR 32
+    sub tmp2, tmp2, 48
+    add ret0, tmp2, ret0, LSL 3
 
 
+
+
+    bl print_dice
+
+
+
+
+
+
+    mov arg0, 1
+    adr arg1, hello_txt
+    mov arg2, hello_len
+    mov syscall, __NR_write
+    svc 0
 
     mov ret0, 10
 
