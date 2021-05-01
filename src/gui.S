@@ -37,14 +37,15 @@ show_gui_game:
     stp xzr, xzr, [sp, 0]
 
     mov tmp0, arg0
-    adr arg0, gui_game_txt // first arg?
-    ldr arg1, [tmp0, game_state.aces] // first arg
-    mov arg2, 2 // first arg
-    mov arg3, 3 // first arg
-    mov arg4, 4 // first arg
-    mov arg5, 5 // first arg
-    mov arg6, 6 // first arg
-    mov arg7, 7 // first arg
+
+    adr arg0, gui_game_txt
+    ldr arg1, [tmp0, game_state.aces]
+    ldr arg2, [tmp0, game_state.twos]
+    ldr arg3, [tmp0, game_state.threes]
+    ldr arg4, [tmp0, game_state.fours]
+    ldr arg5, [tmp0, game_state.fives]
+    ldr arg6, [tmp0, game_state.sixes]
+    ldr arg7, [tmp0, game_state.three_of_a_kind]
     //str tmp0, [sp, #16]
     //str tmp0, [sp, #8]
     mov tmp1, 16
