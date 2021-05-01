@@ -12,6 +12,7 @@ random_dice:
 
     retry:
 
+    // this is likely super slow
     // https://man7.org/linux/man-pages/man2/getrandom.2.html
     mov arg0, sp
     mov arg1, 12
@@ -35,6 +36,7 @@ random_dice:
     lsr     wtmp0, wtmp0, #1
     umull   tmp0, wtmp0, wtmp1
     lsr     ret0, tmp0, #44
+    add ret0, ret0, 1
 
     ldr lr, [sp, 16]
     add sp, sp, 32

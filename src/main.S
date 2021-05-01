@@ -61,6 +61,7 @@ main:
     mov syscall, __NR_write
     svc 0
 
+    main_retry:
     bl random_dice
     bl this_is_totally_sorting
     bl print_dice
@@ -70,6 +71,8 @@ main:
     mov arg2, hello_len
     mov syscall, __NR_write
     svc 0
+
+    b main_retry
 
     mov ret0, 10
 
