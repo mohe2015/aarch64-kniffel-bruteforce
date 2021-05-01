@@ -11,6 +11,14 @@ ret2 .req x2
 tmp0 .req x8
 tmp1 .req x9
 tmp2 .req x10
+tmp3 .req x11
+tmp4 .req x12
+tmp5 .req x13
+tmp6 .req x14
+tmp7 .req x15
+tmp8 .req x16
+tmp9 .req x17
+tmp10 .req x18
 
 wtmp0 .req w8
 wtmp1 .req w9

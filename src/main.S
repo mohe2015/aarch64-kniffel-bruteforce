@@ -6,6 +6,7 @@
 // https://developer.arm.com/documentation/102374/0101/Program-flow---conditional-select-instructions
 // https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/using-the-stack-in-aarch64-implementing-push-and-pop
 // https://gist.github.com/Prakasaka/219fe5695beeb4d6311583e79933a009
+// https://armkeil.blob.core.windows.net/developer/Files/pdf/graphics-and-multimedia/ARMv8_InstructionSetOverview.pdf
 // First this will only be a program to play kniffel, not to predict anything
 #include <asm/unistd.h>
 #include "utils.S"
@@ -13,6 +14,7 @@
 #include "boxes.S"
 #include "../test/boxes.S"
 #include "sort.S"
+#include "roll_dice.S"
 
 .struct 0
 dimension_t.x: .skip 4
@@ -59,9 +61,19 @@ main:
     mov syscall, __NR_write
     svc 0
 
+    bl random_dice
+    bl this_is_totally_sorting
+    bl print_dice
+
+    mov arg0, 1
+    adr arg1, hello_txt
+    mov arg2, hello_len
+    mov syscall, __NR_write
+    svc 0
+
     mov ret0, 10
 
-    ldr lr, [sp], 0
+    ldr lr, [sp, 0]
     add sp, sp, 16
 
     ret

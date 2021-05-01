@@ -42,5 +42,5 @@ print_dice:
     mov syscall, __NR_write
     svc 0
 
-    ldr lr, [sp], 0
+    ldr lr, [sp, 0]
     add sp, sp, 16

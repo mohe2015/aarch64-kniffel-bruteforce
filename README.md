@@ -2,7 +2,7 @@
 
 ```bash
 nix develop
-aarch64-linux-gnu-gcc -Og -g -ggdb src/main.S ; ./a.out ; echo $?
+aarch64-linux-gnu-gcc -Wall -Wextra -Og -g -ggdb src/main.S && ./a.out ; echo $?
 ```
 
 ## GDB settings

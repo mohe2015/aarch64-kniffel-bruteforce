@@ -26,6 +26,6 @@ test_twos_points:
     assert_1 5, twos_points, 0b010010010010010
     assert_1 4, twos_points, 0b001010010010010
 
-    ldr lr, [sp], 0
+    ldr lr, [sp, 0]
     add sp, sp, 16
     ret

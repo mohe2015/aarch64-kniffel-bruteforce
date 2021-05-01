@@ -1,7 +1,8 @@
+// https://godbolt.org/
 #include<stdio.h>
 #include<stdint.h>
 int main (){
-    uint8_t v;
-    scanf("%s", &v);
-    return v/3;
+    uint32_t v;
+    scanf("%u", &v);
+    return v/6;
 }
