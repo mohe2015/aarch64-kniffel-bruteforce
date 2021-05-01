@@ -17,11 +17,7 @@
 #include "sort.S"
 #include "roll_dice.S"
 #include "gui.S"
-
-.struct 0
-dimension_t.x: .skip 4
-dimension_t.y: .skip 4
-dimension_t_size:
+#include "game_state.S"
 
 .global main
 
