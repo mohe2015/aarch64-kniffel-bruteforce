@@ -65,6 +65,10 @@ main:
     mov arg0, sp
     bl show_gui_game
 
+    
+
+
+/*
     main_retry:
     bl random_dice
     //bl this_is_totally_sorting
@@ -77,6 +81,8 @@ main:
     svc 0
 
     //b main_retry
+*/
+
 
 
     mov ret0, 10
