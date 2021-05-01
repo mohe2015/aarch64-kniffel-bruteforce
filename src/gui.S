@@ -32,9 +32,8 @@ gui_game_len = . - gui_game_txt
 .text
 
 show_gui_game:
-    sub sp, sp, 32
-    str lr, [sp, 16]
-    stp xzr, xzr, [sp, 0]
+    sub sp, sp, 48+16
+    str lr, [sp, 48]
 
     mov tmp0, arg0
 
@@ -46,14 +45,28 @@ show_gui_game:
     ldr arg5, [tmp0, game_state.fives]
     ldr arg6, [tmp0, game_state.sixes]
     ldr arg7, [tmp0, game_state.three_of_a_kind]
-    //str tmp0, [sp, #16]
-    //str tmp0, [sp, #8]
-    mov tmp1, 16
+
+    ldr tmp1, [tmp0, game_state.four_of_a_kind]
     str tmp1, [sp, 0]
+
+    ldr tmp1, [tmp0, game_state.full_house]
+    str tmp1, [sp, #8]
+
+    ldr tmp1, [tmp0, game_state.small_straight]
+    str tmp1, [sp, #16]
+
+    ldr tmp1, [tmp0, game_state.large_straight]
+    str tmp1, [sp, #24]
+
+    ldr tmp1, [tmp0, game_state.yahtzee]
+    str tmp1, [sp, #32]
+
+    ldr tmp1, [tmp0, game_state.chance]
+    str tmp1, [sp, #40]
+
     bl printf
 
-    ldp tmp1, tmp2, [sp, 0]
-    ldr lr, [sp, 16]
-    add sp, sp, 32
+    ldr lr, [sp, 48]
+    add sp, sp, 48+16
 
     ret
