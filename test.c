@@ -4,5 +4,5 @@
 int main (){
     uint32_t v;
     scanf("%u", &v);
-    return v/6;
+    return v/10922;
 }

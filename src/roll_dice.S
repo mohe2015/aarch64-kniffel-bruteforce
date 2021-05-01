@@ -30,9 +30,11 @@ random_dice:
     b.ge retry
 
     // divide by 10922
-
-    // put into result
-    mov ret0, tmp0
+    mov     wtmp1, #13
+    movk    wtmp1, #49155, lsl #16
+    lsr     wtmp0, wtmp0, #1
+    umull   tmp0, wtmp0, wtmp1
+    lsr     ret0, tmp0, #44
 
     ldr lr, [sp, 16]
     add sp, sp, 32
