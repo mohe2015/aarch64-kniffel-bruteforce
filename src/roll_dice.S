@@ -5,16 +5,10 @@ random_dice:
     sub sp, sp, 32
     str lr, [sp, 16]
 
-    // twelve bytes needed for 6*16 bits
-
-    // 2^32/6=715827882.667
-    // 715827882*6=4294967292
-    // totally unlikely 9*10^-10 that we need to call this twice
-    // (4294967292/2^32)^6=0.999999994412
-    // so probably just fully restart on failure
-
-    // 16 bits could be enough
+    // 2^16/6=10922.6666667
+    // 10922*6=65532
     // (65532/2^16)^6=0.99963384493
+    // so probably just fully restart on failure
 
     retry:
 
@@ -35,10 +29,7 @@ random_dice:
     cmp tmp0, tmp3
     b.ge retry
 
-    // stolen division by 6 for unsigned 16 bit integer
-    mov     wtmp1, #43691
-    mul     wtmp0, wtmp0, wtmp1
-    lsr     wtmp0, wtmp0, #18
+    // divide by 10922
 
     // put into result
     mov ret0, tmp0
