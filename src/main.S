@@ -12,11 +12,11 @@
 // First this will only be a program to play kniffel, not to predict anything
 #include <asm/unistd.h>
 #include "utils.S"
-#include "five_dice.S"
-#include "boxes.S"
-#include "../test/boxes.S"
+#include "dice_io.S"
+#include "categories.S"
+#include "../test/categories.S"
 #include "sort.S"
-#include "roll_dice.S"
+#include "dice_roll.S"
 #include "gui.S"
 #include "game_state.S"
 
