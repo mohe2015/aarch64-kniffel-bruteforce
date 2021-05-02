@@ -77,6 +77,7 @@ main:
     mov syscall, __NR_write
     svc 0
 
+    mov arg0, sp
     bl read_dice
     mov var0, ret0
     bl print_dice
@@ -104,6 +105,12 @@ main:
     mov arg0, var0
     bl sixes_points
     strh wret0, [sp, game_state.sixes]
+
+    mov arg0, 1
+    adr arg1, hello_txt
+    mov arg2, hello_len
+    mov syscall, __NR_write
+    svc 0
 
     mov arg0, sp
     bl show_gui_game
