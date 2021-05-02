@@ -78,8 +78,35 @@ main:
     svc 0
 
     bl read_dice
+    mov var0, ret0
     bl print_dice
 
+    mov arg0, var0
+    bl ones_points
+    strh wret0, [sp, game_state.aces]
+
+    mov arg0, var0
+    bl twos_points
+    strh wret0, [sp, game_state.twos]
+
+    mov arg0, var0
+    bl threes_points
+    strh wret0, [sp, game_state.threes]
+
+    mov arg0, var0
+    bl fours_points
+    strh wret0, [sp, game_state.fours]
+
+    mov arg0, var0
+    bl fives_points
+    strh wret0, [sp, game_state.fives]
+
+    mov arg0, var0
+    bl sixes_points
+    strh wret0, [sp, game_state.sixes]
+
+    mov arg0, sp
+    bl show_gui_game
 
     mov arg0, 1
     adr arg1, hello_txt

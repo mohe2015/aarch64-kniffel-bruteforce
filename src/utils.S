@@ -17,6 +17,22 @@ ret6 .req x6
 arg7 .req x7
 ret7 .req x7
 
+warg0 .req w0
+wret0 .req w0
+warg1 .req w1
+wret1 .req w1
+warg2 .req w2
+wret2 .req w2
+warg3 .req w3
+wret3 .req w3
+warg4 .req w4
+wret4 .req w4
+warg5 .req w5
+wret5 .req w5
+warg6 .req w6
+wret6 .req w6
+warg7 .req w7
+wret7 .req w7
 
 
 
@@ -38,5 +54,15 @@ wtmp1 .req w9
 wtmp2 .req w10
 
 // r19-r28 and sp must be preserved (callee-saved)
+var0 .req x19
+var1 .req x20
+var2 .req x21
+var3 .req x22
+var4 .req x23
+var5 .req x24
+var6 .req x25
+var7 .req x26
+var8 .req x27
+var9 .req x28
 
 syscall .req x8
