@@ -60,18 +60,18 @@ three_of_a_kind_points:
     dice .req arg0
     diebit .req tmp0
     kind .req tmp1
+    current_die .req tmp2
     sum .req ret0
     mov diebit, 0b111
 
     and kind, diebit, dice, LSR 12
     mov sum, kind
 
-    and tmp2, diebit, dice, LSR 9
-    cmp kind, tmp2
+    and current_die, diebit, dice, LSR 9
+    cmp kind, current_die
     add tmp3, sum, kind
     csel sum, tmp3, eq // TODO FIXME
     csel kind, kind, 0, eq // TODO FIXME
-
 
     ret
     .unreq dice
