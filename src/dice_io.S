@@ -10,6 +10,7 @@ five_dice_size:
 print_dice:
     sub sp, sp, 16
 
+    // TODO maybe extract these two lines as "extract nth digit" as this is a common need
     mov tmp0, 0b111
     and tmp1, tmp0, arg0, LSR 12
     add tmp1, tmp1, 48

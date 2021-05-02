@@ -51,3 +51,73 @@ sixes_points:
     mov tmp0, arg0
     mov tmp1, 0b110110110110110
     n_points
+
+// case a: aaaxy
+// case b: xaaay
+// case c: xyaaa
+// alternatively 18 xor checks - maybe better?
+three_of_a_kind_points:
+    dice .req arg0
+    diebit .req tmp0
+    kind .req tmp1
+    sum .req ret0
+    mov diebit, 0b111
+
+    and kind, diebit, dice, LSR 12
+    mov sum, kind
+
+    and tmp2, diebit, dice, LSR 9
+    cmp kind, tmp2
+    add tmp3, sum, kind
+    csel sum, tmp3, eq // TODO FIXME
+    csel kind, kind, 0, eq // TODO FIXME
+
+
+    ret
+    .unreq dice
+    .unreq diebit
+    .unreq kind
+    .unreq sum
+
+
+// bbbbx
+// xbbbb
+
+// ccccc
+yahtzee:
+    kind .req tmp2
+    dice .req tmp3
+    mov dice, arg0
+
+    mov tmp0, 0b111
+    and kind, tmp0, arg0, LSR 12
+    mov ret0, kind
+
+    mov tmp0, 0b111
+    and tmp1, tmp0, arg0, LSR 9
+    cmp kind, tmp1
+    b.ne yahtzee_error
+
+    mov tmp0, 0b111
+    and tmp1, tmp0, arg0, LSR 6
+    cmp kind, tmp1
+    b.ne yahtzee_error
+
+    mov tmp0, 0b111
+    and tmp1, tmp0, arg0, LSR 3
+    cmp kind, tmp1
+    b.ne yahtzee_error
+
+    mov tmp0, 0b111
+    and tmp1, tmp0, arg0, LSR 0
+    cmp kind, tmp1
+    b.ne yahtzee_error
+
+    ret
+
+    yahtzee_error:
+    mov ret0, 0
+    ret
+
+    .unreq kind
+    .unreq dice
