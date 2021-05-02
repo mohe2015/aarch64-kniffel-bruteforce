@@ -8,42 +8,40 @@ five_dice_size:
 
 .text
 print_dice:
-    //sub sp, sp, 16
-    //str lr, [sp, 0]
+    sub sp, sp, 16
 
     mov tmp0, 0b111
     and tmp1, tmp0, arg0, LSR 12
     add tmp1, tmp1, 48
-    strb wtmp1, [sp, #8]
+    strb wtmp1, [sp, #0]
 
     mov tmp0, 0b111
     and tmp1, tmp0, arg0, LSR 9
     add tmp1, tmp1, 48
-    strb wtmp1, [sp, #9]
+    strb wtmp1, [sp, #1]
 
     mov tmp0, 0b111
     and tmp1, tmp0, arg0, LSR 6
     add tmp1, tmp1, 48
-    strb wtmp1, [sp, #10]
+    strb wtmp1, [sp, #2]
 
     mov tmp0, 0b111
     and tmp1, tmp0, arg0, LSR 3
     add tmp1, tmp1, 48
-    strb wtmp1, [sp, #11]
+    strb wtmp1, [sp, #3]
 
     mov tmp0, 0b111
     and tmp1, tmp0, arg0, LSR 0
     add tmp1, tmp1, 48
-    strb wtmp1, [sp, #12]
+    strb wtmp1, [sp, #4]
 
     mov arg0, 1
-    add arg1, sp, 8
+    mov arg1, sp
     mov arg2, 5
     mov syscall, __NR_write
     svc 0
 
-    //ldr lr, [sp, 0]
-    //add sp, sp, 16
+    add sp, sp, 16
     ret
 
 read_dice:
